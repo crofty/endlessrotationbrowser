@@ -1,0 +1,174 @@
+@import "compass/typography/lists/bullets";
+@import "compass/css3/box";
+@import "compass/css3/images";
+@import "compass/css3/box-shadow";
+$body: #001116;
+$bar: $body;
+$border: #38334B;
+$body-text: #9FC3CD;
+$box: #0F1620;
+$item-background-1: #141E2B;
+$item-background-2: #121B28;
+$item-background-hover: #192331;
+$item-background-selected: darken($item-background-1,4%);
+$item-border-bottom: #211737;
+$header-text-green: #B3D733;
+$link-green: #a9cd28;
+$link-hover-green: darken($header-text-green,10%);
+$track-text: #B0C1D6;
+$node: #141e2b;
+
+circle.node {
+  stroke: lighten($border,5%);
+  stroke-width: 1.5px;
+  fill: $item-background-1;
+}
+
+line.link {
+  stroke-width: 1;
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+body{
+  #container{
+    @include display-box;
+    @include box-orient(horizontal);
+    #chart{
+      width: 500px;
+    }
+    #content{
+      @include box-flex(1);
+    }
+  }
+}
+
+.box-header{
+  background-color: complement($body);
+  color: $header-text-green;
+  text-transform: uppercase;
+  font-weight: normal;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.bar{
+  @include background(linear-gradient(top, $bar, darken($bar,30%)));
+  border-bottom: 1px solid $border;
+  @include box-shadow(inset 0 1px 0 transparentize($border,0.4));
+}
+
+body{
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-color: $body;
+  color: $body-text;
+}
+
+header{
+  @extend .bar;
+  padding-left: 10px;
+}
+
+#notice{
+  margin: 10px;
+  padding: 10px;
+  background-color: $box;
+  text-align: center;
+  a{
+    color: $link-green;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+#content{
+  background-color: $box;
+  padding: 10px;
+  margin: 10px;
+  h2{
+    @extend .box-header;
+    .pagination-info{
+      color: darken($header-text-green, 20%);
+      margin-left: 10px;
+    }
+  }
+  a{
+    display: block;
+    background-color: $item-background-1;
+    color: $track-text;
+    &:hover{
+      color: $link-green;
+      background-color: $item-background-hover;
+      text-decoration: none;
+    }
+    &:visited{
+      color: $track-text;
+    }
+  }
+  #video{
+    margin: 20px 10px;
+  }
+  ul, ol{
+    @include no-bullets;
+    margin: 0px;
+    li{
+      background-color: $item-background-1;
+      border-bottom: 1px solid $item-border-bottom;
+      color: $track-text;
+      padding: 10px;
+      a{
+        margin: -10px;
+        padding: 10px;
+        display: block;
+        background-color: inherit;
+        &:visited{
+          color: $track-text;
+          background-color: inherit;
+        }
+        &:hover{
+          color: $link-green;
+        }
+      }
+      &:nth-child(2n){
+        background-color: $item-background-2;
+      }
+      &:hover{
+        background-color: $item-background-hover;
+      }
+    }
+  }
+}
+
+dl{
+  dt, dd{
+    margin-bottom: 2px;
+  }
+  dt{
+    padding: 10px;
+  }
+  dt{
+    float: left;
+    clear: left;
+    width: 100px;
+    &:after{
+      content: ':'
+    }
+  }
+  dd{
+    margin-left: 120px;
+    a{
+      padding: 10px;
+    }
+  }
+}
+
+a{
+  color: $link-green;
+  text-decoration: none;
+  &:hover{
+    color: $link-green;
+    text-decoration: underline;
+  }
+}
+
