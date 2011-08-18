@@ -15,6 +15,9 @@ TODO:
 - Colour and Size the nodes differently depending on their type.  You should be able to tell when looking at the graph, which nodes are tracks, which are artists etc.
 - A click on a 'paginated node' should load and display the next page of data
 - Use a ContainerView for the content div.  The current method of using `{{#if}}` in the handlebars templates is super hacky
+- Optimise the code.  It starts running really slowly when displaying more than a few nodes
+- Fix all the YouTube errors
+- Work out why I'm getting the `Maximum call stack size exceeded` Sproutcore error when opening a few nodes
 
 When developing, compile files with:
 
