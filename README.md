@@ -6,7 +6,17 @@ This example app allows you to browse data pulled from the [Endless Rotation](ht
 
 Building this allowed me to play around with [d3.js](http://mbostock.github.com/d3/) and I've concluded that it's great.
 
-Compile files with:
+
+### My notes:
+
+TODO:
+
+- Check to see if it works in any other browsers
+- Colour and Size the nodes differently depending on their type.  You should be able to tell when looking at the graph, which nodes are tracks, which are artists etc.
+- A click on a 'paginated node' should load and display the next page of data
+- Use a ContainerView for the content div.  The current method of using `{{#if}}` in the handlebars templates is super hacky
+
+When developing, compile files with:
 
     coffee -w -o js/ -c coffee/*
     compass watch --sass-dir sass --css-dir css
