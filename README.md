@@ -18,6 +18,7 @@ TODO:
 - Optimise the code.  It starts running really slowly when displaying more than a few nodes
 - Fix all the YouTube errors
 - Work out why I'm getting the `Maximum call stack size exceeded` Sproutcore error when opening a few nodes
+- Convert to bpm project
 
 When developing, compile files with:
 
