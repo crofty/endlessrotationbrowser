@@ -91,6 +91,7 @@ App.MostCharted = App.Node.extend
     page = @get('page')
     $.getJSON "#{API_URL}/most-charted/last-5-days.json?callback=?&per_page=#{@get('per_page')}&page=#{page}", (data) =>
       tracks = @get('tracks')
+      @set('length', data.tracks.length)
       @set('info',data)
       data.tracks.forEach (jsonTrack) =>
         track = App.Track.create(jsonTrack)
@@ -177,6 +178,7 @@ App.ArtistTracks = App.Node.extend
     tracks = @get('tracks')
     $.getJSON "#{API_URL + @get('url')}.json?callback=?", (data) =>
       @set('info', data)
+      @set('length', data.tracks.length)
       data.tracks.forEach (track) =>
         track = App.Track.create
           target: this
@@ -205,6 +207,7 @@ App.ChartedTracks = App.Node.extend
     tracks = @get('tracks')
     $.getJSON "#{API_URL + @get('url')}.json?callback=?", (data) =>
       @set('info', data)
+      @set('length', data.charts.length)
       data.charts.forEach (chart) =>
         track = App.Track.create
           target: this
@@ -233,6 +236,7 @@ App.ChartedBy = App.Node.extend
     users = @get('users')
     $.getJSON "#{API_URL + @get('url')}.json?callback=?", (data) =>
       @set('info', data)
+      @set('length', data.charts.length)
       data.charts.forEach (chart) =>
         user = App.Artist.create
           target: this
@@ -296,7 +300,7 @@ App.MostChartedView = SC.View.extend
   contentBinding: 'parentView.parentView.content'
   elementId: 'most-charted'
   template: SC.Handlebars.compile '''
-    <h2>Most Charted <span class="pagination-info">(Showing 10 of {{content.info.total_results}})</span></h2>
+    <h2>Most Charted <span class="pagination-info">(Showing {{content.length}} of {{content.info.total_results}})</span></h2>
     {{#collection tagName="ol" contentBinding="content.tracks"}}
       {{#view App.NodeLink node=content}}
         {{parentView.content.artist_name}} - {{parentView.content.title}}
@@ -361,7 +365,7 @@ App.ChartedByView = SC.View.extend
   contentBinding: 'parentView.parentView.content'
   template: SC.Handlebars.compile '''
     <h2>{{content.track.artist_name}} - {{content.track.title}}</h2>
-    <h2>Charted by <span class="pagination-info">(Showing 10 of {{content.info.total_results}})</span></h2>
+    <h2>Charted by <span class="pagination-info">(Showing {{content.length}} of {{content.info.total_results}})</span></h2>
     {{#collection contentBinding="content.users" tagName="ol"}}
       {{#view App.NodeLink node="parentView.content"}}
         {{parentView.content.name}}
@@ -373,7 +377,7 @@ App.ChartedTracksView = SC.View.extend
   contentBinding: 'parentView.parentView.content'
   template: SC.Handlebars.compile '''
     <h2>{{content.artist.name}}</h2>
-    <h2>Charted Tracks <span class="pagination-info">(Showing 10 of {{content.info.total_results}})</span></h2>
+    <h2>Charted Tracks <span class="pagination-info">(Showing {{content.length}} of {{content.info.total_results}})</span></h2>
     {{#collection contentBinding="content.tracks" tagName="ol"}}
       {{#view App.NodeLink node="parentView.content"}}
         {{parentView.content.artist_name}} - {{parentView.content.title}}
@@ -384,7 +388,7 @@ App.ChartedTracksView = SC.View.extend
 App.ArtistTracksView = SC.View.extend
   contentBinding: 'parentView.parentView.content'
   template: SC.Handlebars.compile '''
-    <h2>Tracks by {{content.artist.name}} <span class="pagination-info">(Showing 10 of {{content.info.total_results}})</span></h2>
+    <h2>Tracks by {{content.artist.name}} <span class="pagination-info">(Showing {{content.length}} of {{content.info.total_results}})</span></h2>
     {{#collection contentBinding="content.tracks" tagName="ol"}}
       {{#view App.NodeLink node="parentView.content"}}
         {{parentView.content.artist_name}} - {{parentView.content.title}}
