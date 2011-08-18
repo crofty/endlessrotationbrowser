@@ -1,4 +1,6 @@
 source :gemcutter
 
-gem 'compass'
 gem 'rack'
+group :development do
+  gem 'compass'
+end
