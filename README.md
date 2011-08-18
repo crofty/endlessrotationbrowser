@@ -12,6 +12,7 @@ Building this allowed me to play around with [d3.js](http://mbostock.github.com/
 TODO:
 
 - Check to see if it works in any other browsers
+- Upgrade the version of Sproutcore and get rid of all the `parentView` crap
 - Colour and Size the nodes differently depending on their type.  You should be able to tell when looking at the graph, which nodes are tracks, which are artists etc.
 - A click on a 'paginated node' should load and display the next page of data
 - Use a ContainerView for the content div.  The current method of using `{{#if}}` in the handlebars templates is super hacky
