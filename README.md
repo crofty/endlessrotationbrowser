@@ -1,6 +1,6 @@
 # Endless Rotation Browser
 
-NOTE: This was very quickly hacked together for the [Sproutcore Demo App Hackathon](http://demohackathon.strobeapp.com/). I've only tested it in Chrome.
+NOTE: This was very quickly hacked together for the [Sproutcore Demo App Hackathon](http://demohackathon.strobeapp.com/).
 
 This example app allows you to browse data pulled from the [Endless Rotation](http://endlessrotation.com/) API.  When the page first loads, you are shown the top 10 most charted tracks over the last 5 days.  You can then start exploring the dataset by clicking on the track names or the nodes in the graph.
 
@@ -11,7 +11,6 @@ Building this allowed me to play around with [d3.js](http://mbostock.github.com/
 
 TODO:
 
-- Check to see if it works in any other browsers
 - Upgrade the version of Sproutcore and get rid of all the `parentView` crap
 - Colour and Size the nodes differently depending on their type.  You should be able to tell when looking at the graph, which nodes are tracks, which are artists etc.
 - A click on a 'paginated node' should load and display the next page of data
